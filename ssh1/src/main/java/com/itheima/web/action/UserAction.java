@@ -31,6 +31,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     
     public String findById(){
         model = userService.findById(getModel().getId());
+        System.out.println(model);
         return SUCCESS;
     }
 
