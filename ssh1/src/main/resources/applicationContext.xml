@@ -18,10 +18,20 @@
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource"></property>
-		<!-- 指定hibernate核心配置文件的位置 -->
-		<property name="configLocations">
+		<!-- 注入hibernate核心配置文件的选配 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.isolation">4</prop>
+			</props>
+		</property>
+		<!-- 映射文件 -->
+		<property name="mappingResources">
 			<array>
-				<value>classpath:hibernate.cfg.xml</value>
+				<value>com/itheima/domain/User.hbm.xml</value>
 			</array>
 		</property>
 	</bean>
